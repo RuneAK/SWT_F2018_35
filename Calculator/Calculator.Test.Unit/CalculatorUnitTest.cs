@@ -32,31 +32,28 @@ namespace Calculator.Test.Unit
 		[TestCase(0, 4, -4)]
 		[TestCase(4, 2, 2)]
 		[TestCase(-3, -3, 0)]
-		public void Subtract_SubtractNumber1AndNumber2_ReturnsCorrectResult(double a, double b, double c)
+		public void Subtract_SubtractNumber1AndNumber2_ReturnCorrectResult(double a, double b, double c)
         {
             Assert.That(_uut.Subtract(a, b), Is.EqualTo(c));
         }
 
-        [Test]
-        public void Multiply_Multiply3And4_Returns12()
+        [TestCase(3, 4, 12)]
+        [TestCase(0, 5, 0)]
+        [TestCase(2, -5, -10)]
+        [TestCase(1, 1, 1)]
+        public void Multiply_MultiplyNumber1AndNumber2_ReturnCorrectResult(double a, double b, double c)
         {
-            Assert.That(_uut.Multiply(3, 4), Is.EqualTo(12));
-        }
-
-        [Test]
-        public void Power_Power3And3_Returns27()
-        {
-            Assert.That(_uut.Power(3, 3), Is.EqualTo(27));
+            Assert.That(_uut.Multiply(a, b), Is.EqualTo(c));
         }
 
         [TestCase(3, 3, 27)]
-        [TestCase(5, 0, 1)]
-        [TestCase(0, 5, 0)]
-        [TestCase(5, -1, 0.2)]
+        [TestCase(1, 0, 1)]
+        [TestCase(0, 2, 0)]
         [TestCase(-2, 3, -8)]
-        public void Power_Test(double a, double b, double c)
+        [TestCase(5, -1, 0.2)]
+        public void Power_Number1TakenToThePowerOfNumber2_ReturnCorrectResult(double a, double b, double c)
         {
-            Assert.That(_uut.Power(a,b), Is.EqualTo(c));
+            Assert.That(_uut.Power(a, b), Is.EqualTo(c));
         }
     }
 }
