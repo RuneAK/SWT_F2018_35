@@ -8,46 +8,45 @@ using NUnit.Framework;
 namespace Calculator.Test.Unit
 {
     [TestFixture()]
+    [Author("Gruppe 35")]
     public class CalculatorUnitTests
     {
+        private Calculator _uut;
+
+        [SetUp]
+        public void Setup()
+        {
+            _uut = new Calculator();
+        }
         [Test]
         public void Add_Add2And4_Returns6()
         {
-            var uut = new Calculator();
 
-            Assert.That(uut.Add(2, 4), Is.EqualTo(6));
+            Assert.That(_uut.Add(2, 4), Is.EqualTo(6));
         }
 
         [Test]
         public void Add_AddMinus2And4_Returns2()
         {
-            var uut = new Calculator();
-
-            Assert.That(uut.Add(-2, 4), Is.EqualTo(2));
+            Assert.That(_uut.Add(-2, 4), Is.EqualTo(2));
         }
 
         [Test]
         public void Subtract_Subtract5And2_Returns3()
         {
-            var uut = new Calculator();
-
-            Assert.That(uut.Subtract(5, 2), Is.EqualTo(3));
+            Assert.That(_uut.Subtract(5, 2), Is.EqualTo(3));
         }
 
         [Test]
         public void Multiply_Multiply3And4_Returns12()
         {
-            var uut = new Calculator();
-
-            Assert.That(uut.Multiply(3, 4), Is.EqualTo(12));
+            Assert.That(_uut.Multiply(3, 4), Is.EqualTo(12));
         }
 
         [Test]
         public void Power_Power3And3_Returns27()
         {
-            var uut = new Calculator();
-
-            Assert.That(uut.Power(3, 3), Is.EqualTo(27));
+            Assert.That(_uut.Power(3, 3), Is.EqualTo(27));
         }
 
         [TestCase(3, 3, 27)]
@@ -57,9 +56,7 @@ namespace Calculator.Test.Unit
         [TestCase(-2, 3, -8)]
         public void Power_Test(double a, double b, double c)
         {
-            var uut = new Calculator();
-
-            Assert.That(uut.Power(a,b), Is.EqualTo(c));
+            Assert.That(_uut.Power(a,b), Is.EqualTo(c));
         }
     }
 }
