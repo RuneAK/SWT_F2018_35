@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,24 @@ namespace Calculator
             var result = Math.Pow(a, b);
             Accumulator = result;
             return result;
+        }
+
+        public double Divide(double divided, double divisor)
+        {
+            if (divisor == 0)
+            {
+                // Ville være bedre med en exception her
+                var result = 0;
+                Accumulator = result;
+                return result;
+            }
+            
+            else
+            {
+                var result = divided / divisor;
+                Accumulator = result;
+                return result;
+            } 
         }
 
         public double Accumulator { get; private set; }
