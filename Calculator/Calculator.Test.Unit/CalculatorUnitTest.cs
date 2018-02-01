@@ -7,36 +7,34 @@ using NUnit.Framework;
 
 namespace Calculator.Test.Unit
 {
-    [TestFixture()]
-    [Author("Gruppe 35")]
-    public class CalculatorUnitTests
-    {
-        private Calculator _uut;
+	[TestFixture()]
+	[Author("Gruppe 35")]
+	public class CalculatorUnitTests
+	{
+		private Calculator _uut;
 
-        [SetUp]
-        public void Setup()
-        {
-            _uut = new Calculator();
-        }
-        [TestCase(2, 4, 6)]
-        [TestCase(-4, 8, 4)]
-        [TestCase(3, -7, -4)]
-        public void Add_Add2And4_Returns6(double a, double b, double c)
-        {
+		[SetUp]
+		public void Setup()
+		{
+			_uut = new Calculator();
+		}
 
-            Assert.That(_uut.Add(a, b), Is.EqualTo(c));
-        }
+		[TestCase(2, 4, 6)]
+		[TestCase(-4, 8, 4)]
+		[TestCase(3, -7, -4)]
+		public void Add_AddNumber1AndNumber2_ReturnsCorrectResult(double a, double b, double c)
+		{
 
-        [Test]
-        public void Add_AddMinus2And4_Returns2()
-        {
-            Assert.That(_uut.Add(-2, 4), Is.EqualTo(2));
-        }
+			Assert.That(_uut.Add(a, b), Is.EqualTo(c));
+		}
 
-        [Test]
-        public void Subtract_Subtract5And2_Returns3()
+		[TestCase(2, 4, -2)]
+		[TestCase(0, 4, -4)]
+		[TestCase(4, 2, 2)]
+		[TestCase(-3, -3, 0)]
+		public void Subtract_SubtractNumber1AndNumber2_ReturnsCorrectResult(double a, double b, double c)
         {
-            Assert.That(_uut.Subtract(5, 2), Is.EqualTo(3));
+            Assert.That(_uut.Subtract(a, b), Is.EqualTo(c));
         }
 
         [Test]
