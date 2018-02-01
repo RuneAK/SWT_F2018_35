@@ -18,11 +18,13 @@ namespace Calculator.Test.Unit
         {
             _uut = new Calculator();
         }
-        [Test]
-        public void Add_Add2And4_Returns6()
+        [TestCase(2, 4, 6)]
+        [TestCase(-4, 8, 4)]
+        [TestCase(3, -7, -4)]
+        public void Add_Add2And4_Returns6(double a, double b, double c)
         {
 
-            Assert.That(_uut.Add(2, 4), Is.EqualTo(6));
+            Assert.That(_uut.Add(a, b), Is.EqualTo(c));
         }
 
         [Test]
