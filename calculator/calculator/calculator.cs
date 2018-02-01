@@ -14,7 +14,13 @@ namespace Calculator
             var result = a + b;
             Accumulator = result;
             return result;
+        }
 
+        public double Add(double addend)
+        {
+            var result = addend + Accumulator;
+            Accumulator = result;
+            return result;
         }
 
         public double Subtract(double a, double b)
@@ -24,9 +30,22 @@ namespace Calculator
             return result;
         }
 
+        public double Subtract(double subtractor)
+        {
+            var result = Accumulator - subtractor;
+            Accumulator = result;
+            return result;
+        }
         public double Multiply(double a, double b)
         {
             var result = a * b;
+            Accumulator = result;
+            return result;
+        }
+
+        public double Multiply(double multiplier)
+        {
+            var result = Accumulator * multiplier;
             Accumulator = result;
             return result;
         }
@@ -38,22 +57,42 @@ namespace Calculator
             return result;
         }
 
-        public double Divide(double divided, double divisor)
+        public double Power(double exponent)
         {
-            if (divisor == 0)
+            var result = Math.Pow(Accumulator, exponent);
+            Accumulator = result;
+            return result;
+        }
+
+        public double Divide(double dividend, double divisor)
+        {
+            try
             {
-                // Ville være bedre med en exception her
-                var result = 0;
+                var result = dividend / divisor;
                 Accumulator = result;
                 return result;
             }
-            
-            else
+            catch (DivideByZeroException)
             {
-                var result = divided / divisor;
+                Console.WriteLine($"The dividend {dividend} is being divided by zero");
+                Accumulator = 0;
+                return 0;
+            }
+        }
+
+        public double Divide(double divisor)
+        {
+            try
+            {
+                var result = Accumulator / divisor;
                 Accumulator = result;
                 return result;
-            } 
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine($"The dividend {Accumulator} is being divided by zero");
+                throw;
+            }
         }
 
         public double Accumulator { get; private set; }
