@@ -99,16 +99,26 @@ namespace Calculator.Test.Unit
         [TestCase(6, 2, 3)]
         [TestCase(-4, 2, -2)]
         [TestCase(8, -2, -4)]
-        // [TestCase(6, 0, 99999)] <- 99999 should be infinity, or test for exception thrown.
         [TestCase(0, 10, 0)]
         public void Divide_Number1DividedByNumber2_ReturnCorrectResult(double a, double b, double c)
         {
             Assert.That(_uut.Divide(a, b), Is.EqualTo(c));
         }
 
+        [Test]
+        public void Divide_DivisionByZero_ThrowsException()
+        {
+            Assert.Throws<DivideByZeroException>(() => _uut.Divide(4, 0));
+        }
+
+        [Test]
+        public void Divide_Divide_DivisionByZero_ThrowsException()
+        {
+            Assert.Throws<DivideByZeroException>(() => _uut.Divide(0));
+        }
+
         [TestCase(8, 2, 1, 4)]
         [TestCase(0, 2, 2, 0)]
-        // [TestCase(6, 2, 0, 99999)] <- 99999 should be infinity, or test for exception thrown.
         [TestCase(-8, 2, 2, -2)]
         [TestCase(-12, 2, -3, 2)]
         public void Divide_Divide_Number1DividedByNumber2DividedByNumber3_ReturnCorrectResult(double a, double b,
@@ -120,7 +130,6 @@ namespace Calculator.Test.Unit
 
         [TestCase(8, 2, 4, -4, -16, 14, -2, -1, -0.5)]
         [TestCase(-12, 3, -4, 10, -40, -10, -50, 3, -125000)]
-        // [TestCase(4, 0, 99999, -1, -99999, 14, -99999, 1, -99999)] <- 99999 should be infinity, and -99999 should be negativve infinity, or exception thrown.
         public void Add_Divide_Multiply_Add_Power_AddNumber1DivideByNumber2MultiplyByNumber4AddNumber6TakenToThePowerOfNumber8_ReturnCorrectResult(double a,
             double b, double c, double d, double e, double f, double g, double h, double i)
         {
