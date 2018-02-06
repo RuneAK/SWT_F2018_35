@@ -12,7 +12,7 @@ namespace Calculator
         {
             Calculator myCalc = new Calculator();
             double number1 = 15;
-            double number2 = 0;
+            double number2 = 3;
             double result;
 
             try
