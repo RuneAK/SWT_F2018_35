@@ -66,33 +66,43 @@ namespace Calculator
 
         public double Divide(double dividend, double divisor)
         {
-            try
-            {
-                var result = dividend / divisor;
-                Accumulator = result;
-                return result;
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine($"The dividend {dividend} is being divided by zero");
-                Accumulator = 0;
-                return 0;
-            }
+            if (divisor == 0)
+                throw new System.DivideByZeroException();
+            var result = dividend / divisor;
+            Accumulator = result;
+            return result;            
+            //try
+            //{
+            //    var result = dividend / divisor;
+            //    Accumulator = result;
+            //    return result;
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine($"The dividend {dividend} is being divided by zero");
+            //    Accumulator = 0;
+            //    return 0;
+            //}
         }
 
         public double Divide(double divisor)
         {
-            try
-            {
-                var result = Accumulator / divisor;
-                Accumulator = result;
-                return result;
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine($"The dividend {Accumulator} is being divided by zero");
-                throw;
-            }
+            if (divisor == 0)
+                throw new System.DivideByZeroException();
+            var result = Accumulator / divisor;
+            Accumulator = result;
+            return result;            
+            //try
+            //{
+            //    var result = Accumulator / divisor;
+            //    Accumulator = result;
+            //    return result;
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine($"The dividend {Accumulator} is being divided by zero");
+            //    throw;
+            //}
         }
 
         public double Accumulator { get; private set; }
