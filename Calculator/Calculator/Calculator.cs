@@ -67,27 +67,42 @@ namespace Calculator
         public double Divide(double dividend, double divisor)
         {
             if (divisor == 0)
-            {
-                Clear();
                 throw new System.DivideByZeroException();
-            }
-
             var result = dividend / divisor;
             Accumulator = result;
             return result;            
+            //try
+            //{
+            //    var result = dividend / divisor;
+            //    Accumulator = result;
+            //    return result;
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine($"The dividend {dividend} is being divided by zero");
+            //    Accumulator = 0;
+            //    return 0;
+            //}
         }
 
         public double Divide(double divisor)
         {
             if (divisor == 0)
-            {
-                Clear();
                 throw new System.DivideByZeroException();
-            }
-
             var result = Accumulator / divisor;
             Accumulator = result;
             return result;            
+            //try
+            //{
+            //    var result = Accumulator / divisor;
+            //    Accumulator = result;
+            //    return result;
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine($"The dividend {Accumulator} is being divided by zero");
+            //    throw;
+            //}
         }
 
         public double Accumulator { get; private set; }
