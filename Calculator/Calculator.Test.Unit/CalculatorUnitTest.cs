@@ -139,5 +139,13 @@ namespace Calculator.Test.Unit
             Assert.That(_uut.Add(f), Is.EqualTo(g));
             Assert.That(_uut.Power(h), Is.EqualTo(i));
         }
-    }
+
+	    [Test]
+	    public void Clear_AccumulatorIsZero()
+	    {
+			_uut.Clear();
+			Assert.That(_uut.Accumulator, Is.EqualTo(0));
+	    }
+
+	}
 }
