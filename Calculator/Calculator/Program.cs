@@ -24,7 +24,7 @@ namespace Calculator
             {
                 Console.WriteLine("Attempted division by zero");
             }
-			//some comment
+			
             Console.ReadLine();
         }
     }
